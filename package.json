@@ -1,0 +1,23 @@
+{
+  "name": "rate-limiting-middleware",
+  "version": "1.0.0",
+  "main": "rateLimiter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adasarpan404/rate-limiting-middleware.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adasarpan404/rate-limiting-middleware/issues"
+  },
+  "homepage": "https://github.com/adasarpan404/rate-limiting-middleware#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

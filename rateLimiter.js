@@ -57,6 +57,21 @@ function createSlidingWindowLimiter(options = {}) {
     return (req, res, next) => {
         const key = keyGenerator(req);
 
-        if ()
+        if (store.isAllowed(key, max, windowMs)) {
+            const requests = store.windows.get(key) || [];
+            res.set({
+                'X-RateLimit-Limit': max,
+                'X-RateLimit-Remaining': Math.max(0, max - requests.length),
+                'X-RateLimit-Reset': new Date(Date.now() + windowMs).toISOString()
+            });
+            next();
+        } else {
+            res.status(statusCode).json({
+                error: message,
+                retryAfter: Math.ceil(windowMs / 1000)
+            });
+        }
     }
 }
+
+exports.createRateLimiter = createSlidingWindowLimiter
